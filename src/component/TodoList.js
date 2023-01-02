@@ -1,16 +1,23 @@
+import React, { useState } from "react";
+
 function TodoList() {
+  const initialTodos = [
+    { content: "My first todo", id: 1, status: "true" },
+    { content: "My second todo", id: 2, status: "false" },
+    { content: "My third todo", id: 3, status: "true" },
+  ];
+  const [todos, setTodos] = useState(initialTodos);
+
   return (
     <div className="todoList">
       <h2>Todos</h2>
-      <div className="todo">
-        <input type="checkbox" id="react"></input>
-        <label for="react"> Learn React</label>
-      </div>
-
-      <div className="todo">
-        <input type="checkbox" id="awesome"></input>
-        <label for="awesome"> Be Awesome !</label>
-      </div>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <input type="checkbox" defaultChecked /> {todo.content}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

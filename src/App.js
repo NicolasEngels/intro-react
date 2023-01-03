@@ -7,9 +7,8 @@ import { Button } from "./component/Button/Button.js";
 class App extends Component {
   state = {
     todos: [
-      { id: 1, name: "Read book", done: true },
-      { id: 2, name: "Write letter", done: false },
-      { id: 3, name: "Edit cover", done: false },
+      { id: 1, name: "Learn React", done: false },
+      { id: 2, name: "Be Awesome", done: true },
     ],
     todoText: "",
   };
@@ -44,14 +43,23 @@ class App extends Component {
 
     return (
       <>
-        <h2>ToDo List:</h2>
-        <Input value={todoText} onChange={this.onChangeInput} />
-        <Button onClick={this.onSubmitTodo}>Submit</Button>
-        <List
-          list={todos}
-          onChangeBox={this.onChangeBox}
-          handleDel={this.handleDel}
-        />
+        <header>
+          <h2>ToDo List:</h2>
+          <Input
+            value={todoText}
+            onChange={this.onChangeInput}
+          />
+          <Button onClick={this.onSubmitTodo} className="buttonInput">
+            Submit
+          </Button>
+        </header>
+        <main>
+          <List
+            list={todos}
+            onChangeBox={this.onChangeBox}
+            handleDel={this.handleDel}
+          />
+        </main>
       </>
     );
   }
